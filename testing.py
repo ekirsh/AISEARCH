@@ -104,16 +104,12 @@ base_urls_to_ignore = ['https://twitter.com/','https://open.spotify.com/','https
 
 def get_relevant_text(url):
     if is_youtube_url(url):
-        print(url)
-        print("YOUTUBE")
         try:
             summary = summarize_transcript(get_transcript(url))
-            print(summary)
             return summary
         except:
             return ""
     if any(url.startswith(base_url) for base_url in base_urls_to_ignore):
-        print(f"Ignoring URL: {url}")
         return ""
     # Download the webpage
     downloaded = trafilatura.fetch_url(url)
@@ -135,10 +131,8 @@ def main():
             all_text += text + " "
         except:
             print("COULD NOT ADD")
-    print(all_text)
  #   summary = summarize_text(all_text, api_key)
     summary = summarize_transcript(all_text)
-    print("FINAL OUTPUT: ")
     print(summary)
 
 if __name__ == "__main__":

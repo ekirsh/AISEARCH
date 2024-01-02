@@ -17,7 +17,8 @@ def get_artists():
             ('artist_followers', 1),
             ('popularity', 1)
         ]))
-        return jsonify(artists_data)
+        print(artists_data)
+        return (artists_data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     finally:
@@ -27,7 +28,7 @@ def get_artists():
 def run_ai():
     artist_name = request.args.get('name')
     try:
-        result = subprocess.check_output(['python', 'testing.py', artist_name], universal_newlines=True)
+        result = subprocess.check_output(['python', 'testing.py', artist_name])
         return jsonify({'result': result})
     except subprocess.CalledProcessError as e:
         return jsonify({'error': f'Error running AI: {str(e)}'}), 500
