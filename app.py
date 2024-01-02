@@ -17,8 +17,8 @@ def get_artists():
             ('artist_followers', 1),
             ('popularity', 1)
         ]))
-        print(artists_data)
-        return (artists_data)
+        print(artists_data[0])
+        return jsonify(artists_data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
