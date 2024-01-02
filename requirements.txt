@@ -1,0 +1,9 @@
+requests
+google-search
+google
+beautifulsoup4
+trafilatura
+openai
+pytube
+youtube_transcript_api
+pymongo
