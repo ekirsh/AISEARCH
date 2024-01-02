@@ -1,8 +1,11 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from pymongo import MongoClient
 import subprocess
 
 app = Flask(__name__)
+CORS(app)
+
 client = MongoClient("mongodb+srv://ezra:fbVFtTwornawziKT@cluster0.owft8n4.mongodb.net/?retryWrites=true&w=majority")
 db = client['spotify_data']
 artists_collection = db['artists']
