@@ -123,6 +123,7 @@ def main():
         try:
             all_text += text + " "
         except:
+            print("")
  #   summary = summarize_text(all_text, api_key)
     summary = summarize_transcript(all_text)
     print(summary)
