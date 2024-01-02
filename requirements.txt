@@ -4,6 +4,7 @@ flask
 google
 beautifulsoup4
 trafilatura
+flask-cors
 openai
 pytube
 youtube_transcript_api
