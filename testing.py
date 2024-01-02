@@ -75,7 +75,6 @@ def summarize_text(text, api_key):
     response = requests.post(url, json=payload, headers=headers)
 
     result = json.loads(response.text)
-    print(result)
     return result['cohere']['result']
 
 def get_text_from_url(url):
@@ -92,7 +91,6 @@ def get_text_from_url(url):
 
         # Get all the text in the page
         text = soup.get_text()
-        print(text)
         return text
 
     else:
@@ -116,7 +114,6 @@ def get_relevant_text(url):
 
     # Extract relevant text
     text = trafilatura.extract(downloaded)
-    print(text)
     return text
 
 
@@ -132,7 +129,6 @@ def main():
         except:
             print("COULD NOT ADD")
  #   summary = summarize_text(all_text, api_key)
-    print("SUMMARIZE")
     summary = summarize_transcript(all_text)
     print(summary)
 
