@@ -18,7 +18,11 @@ def get_artists():
             ('popularity', 1)
         ]))
         print(artists_data[0])
-        return jsonify(artists_data)
+        data = []
+        for doc in artists_data:
+            doc['_id'] = str(doc['_id'])
+            data.append(doc)
+        return jsonify(data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
