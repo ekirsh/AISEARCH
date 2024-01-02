@@ -102,10 +102,6 @@ base_urls_to_ignore = ['https://twitter.com/','https://open.spotify.com/','https
 
 def get_relevant_text(url):
     if is_youtube_url(url):
-        try:
-            summary = summarize_transcript(get_transcript(url))
-            return summary
-        except:
             return ""
     if any(url.startswith(base_url) for base_url in base_urls_to_ignore):
         return ""
@@ -127,7 +123,6 @@ def main():
         try:
             all_text += text + " "
         except:
-            print("COULD NOT ADD")
  #   summary = summarize_text(all_text, api_key)
     summary = summarize_transcript(all_text)
     print(summary)
