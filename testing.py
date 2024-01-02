@@ -134,7 +134,7 @@ def main():
  #   summary = summarize_text(all_text, api_key)
     print("SUMMARIZE")
     summary = summarize_transcript(all_text)
-    print(summ ary)
+    print(summary)
 
 if __name__ == "__main__":
     main()
