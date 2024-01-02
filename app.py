@@ -31,6 +31,7 @@ def run_ai():
     artist_name = request.args.get('name')
     try:
         result = subprocess.check_output(['python', 'testing.py', artist_name])
+        print(result)
         return jsonify({'result': result})
     except subprocess.CalledProcessError as e:
         return jsonify({'error': f'Error running AI: {str(e)}'}), 500
