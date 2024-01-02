@@ -132,6 +132,7 @@ def main():
         except:
             print("COULD NOT ADD")
  #   summary = summarize_text(all_text, api_key)
+     print("SUMMARIZE")
     summary = summarize_transcript(all_text)
     print(summary)
 
