@@ -21,8 +21,6 @@ def get_artists():
         return (artists_data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    finally:
-        client.close()
 
 @app.route('/ai', methods=['GET'])
 def run_ai():
