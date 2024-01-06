@@ -32,9 +32,23 @@ def get_artists():
 @app.route('/ai', methods=['GET'])
 def run_ai():
     artist_name = request.args.get('name')
+
     try:
         result = subprocess.check_output(['python', 'testing.py', artist_name])
         print(result)
+
+        # Update MongoDB document with the result
+        artist = artists_collection.find_one({'name': artist_name})
+
+        if artist:
+            # Check if 'description' field exists, create it if not
+            if 'description' in artist:
+                artists_collection.update_one({'name': artist_name}, {'$set': {'description': result.decode()}})
+            else:
+                artists_collection.update_one({'name': artist_name}, {'$set': {'description': result.decode()}})
+        else:
+            return jsonify({'error': f'Artist {artist_name} not found in the database'}), 404
+
         return jsonify({'result': result.decode()})
     except subprocess.CalledProcessError as e:
         return jsonify({'error': f'Error running AI: {str(e)}'}), 500
